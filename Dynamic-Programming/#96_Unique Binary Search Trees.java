@@ -12,6 +12,7 @@ Given n = 3, there are a total of 5 unique BST's.
    *****************/
    public class Solution {
     public int numTrees(int n) {
+       //dp[i]表示当n=i时题目的答案
         int[] dp=new int[n+1];
         dp[0]=1;
         dp[1]=1;
