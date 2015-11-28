@@ -5,13 +5,12 @@
 public class Solution {
     public int maxProfit(int[] prices) {
         if(prices.length<2) return 0;
-        int[] dp=new int[prices.length];
         int min=prices[0];
-        dp[1]=prices[1]-prices[0];
-        for(int i=2;i<dp.length;i++){
+        int max=prices[1]-prices[0];
+        for(int i=2;i<prices.length;i++){
             min=Math.min(min, prices[i-1]);
-            dp[i]=Math.max(dp[i-1],prices[i]-min);
+            max=Math.max(max,prices[i]-min);
         }
-        return Math.max(dp[dp.length-1],0);
+        return Math.max(max,0);
     }
 }
