@@ -11,28 +11,19 @@
 //Implement a function to find the first bad version. You should minimize the number of calls to the API.
 public class Solution extends VersionControl {
     public int firstBadVersion(int n) {
-        if(n==1) return n;
         long low=1;
         long high=n;
-        //if we don't use long, even low and high are with int range, low+high would overflow
         int mid=(int)((low+high)/2);
-        while((mid-1)>=1&&(mid+1)<=n){
-            if(isBadVersion(mid)&&!isBadVersion(mid-1)){
-                return mid;
-            }
-            else if(isBadVersion(mid)&&isBadVersion(mid-1)){
+        while(low<=high){
+            if(isBadVersion(mid)){
                 high=mid-1;
                 mid=(int)((low+high)/2);
             }
-            else if(!isBadVersion(mid)){
+            else{
                 low=mid+1;
                 mid=(int)((low+high)/2);
             }
         }
-        if(mid==1){
-            if(isBadVersion(1)) return 1;
-            else return 2;
-        }
-        else return n;
+        return (int)low;
     }
 }
