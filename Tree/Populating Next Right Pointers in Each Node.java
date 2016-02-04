@@ -39,24 +39,19 @@ After calling your function, the tree should look like:
  */
 public class Solution {
     public void connect(TreeLinkNode root) {
-        if (root != null) {
-            TreeLinkNode levelHead = root;
-            TreeLinkNode parent = levelHead;
-            parent.next = null; 
-            while (levelHead.left != null) {
-                levelHead = levelHead.left;
-                TreeLinkNode levelPointer = levelHead;
-                while (parent.next != null) {
-                    levelPointer.next = parent.right;
-                    levelPointer = levelPointer.next;
-                    levelPointer.next = parent.next.left;
-                    levelPointer = levelPointer.next;
-                    parent = parent.next;
+        while (root != null) {
+            TreeLinkNode dummy = new TreeLinkNode(0);
+            TreeLinkNode cur = dummy;
+            while (root != null) {
+                if (root.left != null) {
+                    cur.next = root.left;
+                    cur = cur.next;
+                    cur.next = root.right;
+                    cur = cur.next;
                 }
-                levelPointer.next = parent.right;
-                levelPointer.next.next = null;
-                parent = levelHead;
+                root = root.next;
             }
+            root = dummy.next;            
         }
     }
 }
