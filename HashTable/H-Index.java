@@ -19,20 +19,22 @@
 
 public class Solution {
     public int hIndex(int[] citations) {
-        int len=citations.length;
-        int[] table=new int[len+2];
-        for(int i=0;i<len;i++){
-            if(citations[i]>len){
-                table[len+1]++;
-            }
-            else{
+        int len = citations.length;
+        int[] table = new int[len + 1];
+        for (int i = 0; i < len; i++) {
+            if (citations[i] >= len) {
+                table[len]++;
+            } else {
                 table[citations[i]]++;
             }
         }
-        int h=table[len+1]+table[len];
-        for(int i=len;i>0;i--){
-            if(i<=h) return i;
-            else h+=table[i-1];
+        int h = table[len];
+        for(int i = len; i > 0; i--){
+            if(i <= h) {
+                return i;
+            } else {
+                h += table[i - 1];
+            }
         }
         return 0;
     }
