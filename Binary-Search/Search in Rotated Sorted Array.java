@@ -7,38 +7,40 @@
 //You may assume no duplicate exists in the array.
 public class Solution {
     public int search(int[] nums, int target) {
-        int len=nums.length;
-        int i=0;
-        int j=len-1;
-        int mid=(i+j)/2;
-        while(i!=j){
-            if(nums[mid]>nums[i]){
-                if(target<=nums[mid]&&target>=nums[i]){
-                    j=mid;
+        int len = nums.length;
+        int i = 0;
+        int j = len-1;
+        int mid = (i + j) / 2;
+        while(i != j){
+            if (nums[mid] > nums[i]) {
+                if (target <= nums[mid] && target >= nums[i]) {
+                    j = mid;
+                } else {
+                    i = mid;
                 }
-                else{
-                    i=mid;
-                }
-                mid=(i+j)/2;
+                mid = (i + j) / 2;
             }
-            else if(nums[mid]<nums[i]){
-                if(target>=nums[mid]&&target<=nums[j]){
-                    i=mid;
+            else if (nums[mid] < nums[i]) {
+                if (target >= nums[mid] && target <= nums[j]) {
+                    i = mid;
+                } else {
+                    j = mid;
                 }
-                else{
-                    j=mid;
-                }
-                mid=(i+j)/2;
-            }
-            else{
-                if(nums[i]==target)
+                mid = (i + j) / 2;
+            } else {
+                if (nums[i] == target) {
                     return i;
-                else if(nums[j]==target)
+                } else if (nums[j] == target) {
                     return j;
-                else return -1;
+                } else {
+                    return -1;
+                }
             }
         }
-        if(target==nums[i]) return i;
-        else return -1;
+        if (target == nums[i]) {
+            return i;
+        } else {
+            return -1;
+        }
     }
 }
