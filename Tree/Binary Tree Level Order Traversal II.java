@@ -30,24 +30,24 @@ public class Solution {
         int level = height(root);
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < level; i++) {
-            List<Integer> levelList=new ArrayList<>();
+            List<Integer> levelList = new ArrayList<>();
             result.add(levelList);
         }
         traversal(result, level-1, root);
         return result;
     }
     public void traversal(List<List<Integer>> list, int level, TreeNode root){
-        if(root!=null){
+        if (root != null) {
             list.get(level).add(root.val);
-            traversal(list,level-1,root.left);
-            traversal(list,level-1,root.right);
+            traversal(list, level - 1, root.left);
+            traversal(list, level - 1, root.right);
         }
     }
     public int height(TreeNode root){
         if (root == null) {
             return 0;
         } else {
-            return 1+Math.max(height(root.left),height(root.right));
+            return 1 + Math.max(height(root.left),height(root.right));
         }
     }
 }
