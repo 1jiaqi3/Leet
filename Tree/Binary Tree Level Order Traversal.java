@@ -31,9 +31,7 @@ public class Solution {
         return ret;
     }
     public void traversal(List<List<Integer>> ret, int level, TreeNode root){
-        if (root == null) {
-            return;
-        } else {
+        if (root != null) {
             if (ret.size() <= level) {
                 List<Integer> levelList = new ArrayList<>();
                 ret.add(levelList);
