@@ -27,27 +27,19 @@ return its bottom-up level order traversal as:
  */
 public class Solution {
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        int level = height(root);
-        List<List<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < level; i++) {
-            List<Integer> levelList = new ArrayList<>();
-            result.add(levelList);
-        }
-        traversal(result, level-1, root);
-        return result;
+        List<List<Integer>> ret = new LinkedList<>();
+        traversal(ret, 0, root);
+        return ret;
     }
-    public void traversal(List<List<Integer>> list, int level, TreeNode root){
+    public void traversal(List<List<Integer>> ret, int level, TreeNode root){
         if (root != null) {
-            list.get(level).add(root.val);
-            traversal(list, level - 1, root.left);
-            traversal(list, level - 1, root.right);
-        }
-    }
-    public int height(TreeNode root){
-        if (root == null) {
-            return 0;
-        } else {
-            return 1 + Math.max(height(root.left),height(root.right));
+            if (ret.size() <= level) {
+                List<Integer> levelList = new LinkedList<>();
+                ret.add(0, levelList);
+            }
+            ret.get(ret.size() - level - 1).add(root.val);
+            traversal(ret, level + 1, root.left);
+            traversal(ret, level + 1, root.right);
         }
     }
 }
