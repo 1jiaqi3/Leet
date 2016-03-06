@@ -27,13 +27,13 @@ Another example is LCA of nodes 2 and 4 is 2, since a node can be a descendant o
  */
 public class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root == p || root == q) {
+        if (root == p || root == q) {
             return root;
         }
-        if(root.val > p.val && root.val > q.val) {
-            return lowestCommonAncestor(root.left,p,q);
-        } else if(root.val < p.val && root.val < q.val) {
-            return lowestCommonAncestor(root.right,p,q);
+        if (root.val > p.val && root.val > q.val) {
+            return lowestCommonAncestor(root.left, p, q);
+        } else if (root.val < p.val && root.val < q.val) {
+            return lowestCommonAncestor(root.right, p, q);
         } else {
             return root;
         }
