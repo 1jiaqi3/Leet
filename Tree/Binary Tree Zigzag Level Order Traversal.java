@@ -25,33 +25,25 @@ return its zigzag level order traversal as:
  *     TreeNode(int x) { val = x; }
  * }
  */
-import java.util.*;
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        int height = getHeight(root);
-        List<List<Integer>> ret = new ArrayList<>();
-        for(int i = 0; i < height; i++){
-            List<Integer> levelList = new ArrayList<>();
-            ret.add(levelList);
-        }
+        List<List<Integer>> ret = new LinkedList<>();
         traverse(ret, root, 0);
-        for (int i = 1; i < height; i += 2) {
-            Collections.reverse((ArrayList)(ret.get(i)));
-        }
         return ret;
     }
     public void traverse(List<List<Integer>> ret, TreeNode root, int level) {
-        if (root == null) {
-            return;
+        if (root != null) {
+            if (ret.size() <= level) {
+                List<Integer> levelList = new LinkedList<>();
+                ret.add(levelList);
+            }
+            if (level % 2 == 0) {
+                ret.get(level).add(root.val);
+            } else {
+                ret.get(level).add(0, root.val);   
+            }
+            traverse(ret, root.left, level + 1);
+            traverse(ret, root.right, level + 1);            
         }
-        ret.get(level).add(root.val);
-        traverse(ret, root.left, level + 1);
-        traverse(ret, root.right, level + 1);
-    }
-    public int getHeight(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
     }
 }
