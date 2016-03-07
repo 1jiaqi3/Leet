@@ -7,24 +7,19 @@
 //You may assume no duplicate exists in the array.
 public class Solution {
     public int findMin(int[] nums) {
-        int len=nums.length;
-        int mid=len/2;
-        int i=0;
-        int j=len-1;
-        if(len==1) return nums[0];
-        while(nums[mid]!=nums[i]&&nums[mid]!=nums[j]){
-            if(nums[mid]<nums[i]&&nums[mid]<nums[j]){
-                j=mid;
-                mid=(i+j)/2;
+        int start = 0;
+        int end = nums.length - 1;
+        while (start < end) {
+            if (nums[start] < nums[end]) {
+                return nums[start];
             }
-            else if(nums[mid]>nums[i]&&nums[mid]>nums[j]){
-                i=mid;
-                mid=(i+j)/2;
-            }
-            else if (nums[mid]<nums[j]&&nums[mid]>nums[i]){
-                return nums[i];
+            int mid = (start + end) / 2;
+            if (nums[mid] >= nums[start]) {
+                start = mid + 1;
+            } else {
+                end = mid;
             }
         }
-        return nums[i]<nums[j]?nums[i]:nums[j];
+        return nums[start];
     }
 }
