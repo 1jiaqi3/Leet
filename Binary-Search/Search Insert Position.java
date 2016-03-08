@@ -10,24 +10,18 @@
 //[1,3,5,6], 0 → 0
 public class Solution {
     public int searchInsert(int[] nums, int target) {
-        int low=0;
-        boolean lowToHigh=true;
-        int high=nums.length-1;
-        int mid=(low+high)/2;
-        while(low<=high){
-            if(nums[mid]==target) return mid;
-            else if(nums[mid]<target){
-                lowToHigh=true;
-                low=mid+1;
-                mid=(low+high)/2;
-            }
-            else if(nums[mid]>target){
-                lowToHigh=false;
-                high=mid-1;
-                mid=(low+high)/2;
+        int low = 0;
+        int high = nums.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] > target) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
             }
         }
-        if(lowToHigh) return low;
-        else return high<0?0:high+1;
+        return low;
     }
 }
