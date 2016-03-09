@@ -12,26 +12,28 @@
 //    (-2,  0, 0, 2)
 public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        List<List<Integer>> result=new ArrayList<>();
+        List<List<Integer>> ret = new ArrayList<>();
         Arrays.sort(nums);
-        HashSet<ArrayList<Integer>> set=new HashSet<>();
-        for(int i=0;i<nums.length-3;i++){
-            for(int j=i+1;j<nums.length-2;j++){
-                int k=j+1;
-                int m=nums.length-1;
-                while (k<m){
-                    int sum=nums[i]+nums[j]+nums[k]+nums[m];
-                    if(sum>target) m--;
-                    else if(sum<target) k++;
-                    else{
-                        ArrayList<Integer> newFour=new ArrayList<>();
+        HashSet<ArrayList<Integer>> set = new HashSet<>();
+        for (int i = 0; i < nums.length - 3; i++) {
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                int k = j + 1;
+                int m = nums.length - 1;
+                while (k < m) {
+                    int sum = nums[i] + nums[j] + nums[k] + nums[m];
+                    if (sum > target) {
+                        m--;
+                    } else if (sum < target) {
+                        k++;
+                    } else {
+                        ArrayList<Integer> newFour = new ArrayList<>();
                         newFour.add(nums[i]);
                         newFour.add(nums[j]);
                         newFour.add(nums[k]);
                         newFour.add(nums[m]);
-                        if(!set.contains(newFour)){
+                        if (!set.contains(newFour)) {
                             set.add(newFour);
-                            result.add(newFour);
+                            ret.add(newFour);
                         }
                         k++;
                         m--;
@@ -39,6 +41,6 @@ public class Solution {
                 }
             }
         }
-        return result;
+        return ret;
     }
 }
