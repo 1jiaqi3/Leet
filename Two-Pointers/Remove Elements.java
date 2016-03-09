@@ -3,23 +3,16 @@
 //The order of elements can be changed. It doesn't matter what you leave beyond the new length.
 public class Solution {
     public int removeElement(int[] nums, int val) {
-        if(nums.length==0) return 0;
-        int i=0;
-        int j=nums.length-1;
-        while(j>=0&&nums[j]==val) j--;
-        while(i<=j){
-            if(nums[i]==val){
-                swap(nums,i,j);
-                while(nums[j]==val)
-                j--;
-            }
-            i++;
+        if (nums.length == 0) {
+            return 0;
         }
-        return i;
-    }
-    public void swap(int[] nums,int i,int j){
-        int tmp=nums[i];
-        nums[i]=nums[j];
-        nums[j]=tmp;
+        int p1 = 0; 
+        for (int p2 = 0; p2 < nums.length; p2++) {
+            if (nums[p2] != val) {
+                nums[p1] = nums[p2];
+                p1++;
+            }
+        }
+        return p1;
     }
 }
