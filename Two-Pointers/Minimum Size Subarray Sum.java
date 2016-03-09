@@ -5,27 +5,28 @@
 //the subarray [4,3] has the minimal length under the problem constraint.
 public class Solution {
     public int minSubArrayLen(int s, int[] nums) {
-        if(nums.length==0) return 0;
-        int i=0;
-        int j=0;
-        int sum=0;
-        int min=nums.length+1;
-        while(j<nums.length){
-            if(sum<s){
-                sum+=nums[j];
-                j++;
-            }
-            else{
-                min=Math.min(j-i,min);
-                sum-=nums[i];
-                i++;
+        if (nums.length == 0) {
+            return 0;
+        }
+        int p1 = 0;
+        int p2 = 0;
+        int sum = 0;
+        int min = nums.length + 1;
+        while (p2 < nums.length) {
+            if (sum < s) {
+                sum += nums[p2];
+                p2++;
+            } else {
+                min = Math.min(p2 - p1, min);
+                sum -= nums[p1];
+                p1++;
             }
         }
-        while(sum>=s){
-            min=Math.min(j-i,min);
-            sum-=nums[i];
-            i++;
+        while (sum >= s) {
+            min = Math.min(p2 - p1, min);
+            sum -= nums[p1];
+            p1++;
         }
-        return min==nums.length+1?0:min;
+        return min == nums.length + 1 ? 0 : min;
     }
 }
