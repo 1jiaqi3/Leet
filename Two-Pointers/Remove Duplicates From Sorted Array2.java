@@ -8,28 +8,16 @@
 //It doesn't matter what you leave beyond the new length.
 public class Solution {
     public int removeDuplicates(int[] nums) {
-        if(nums.length<3) 
+        if (nums.length < 3) { 
             return nums.length;
-        int cur=nums[0];
-        int i=1;
-        int j=1;
-        int count=0;
-        while(j<nums.length){
-            if(!(nums[j]==cur&&count>0)){
-                if(nums[j]==cur)
-                    count++;
-                else count=0;
-                cur=nums[j];
-                swap(nums,i,j);
-                i++;
-            }
-            j++;
         }
-        return i;
-    }
-    public void swap(int[] nums,int i,int j){
-        int tmp=nums[i];
-        nums[i]=nums[j];
-        nums[j]=tmp;
+        int p1 = 2;
+        for (int p2 = p1; p2 < nums.length; p2++) {
+            if (nums[p2] > nums[p1 - 2]) {
+                nums[p1] = nums[p2];
+                p1++;
+            }
+        }
+        return p1;
     }
 }
