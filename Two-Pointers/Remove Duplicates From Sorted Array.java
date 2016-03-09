@@ -18,16 +18,11 @@ public class Solution {
         while (p2 < nums.length) {
             if (nums[p2] != cur) {
                 cur = nums[p2];
-                swap(nums, p1, p2);
+                nums[p1] = nums[p2];
                 p1++;
             }
             p2++;
         }
         return p1;
-    }
-    public void swap(int[] nums,int i, int j){
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
     }
 }
