@@ -12,21 +12,21 @@
 
 public class Solution {
     public boolean isPalindrome(String s) {
-        int i=0;
-        int j=s.length()-1;
-        s=s.toUpperCase();
-        while(i<j){
-            while(i<j&&!(s.charAt(i)>='0'&&s.charAt(i)<='9'||s.charAt(i)<='Z'&&s.charAt(i)>='A')){
-                i++;
+        int p1 = 0;
+        int p2 = s.length() - 1;
+        s = s.toUpperCase();
+        while (p1 < p2) {
+            while (p1 < p2 && !(Character.isDigit(s.charAt(p1)) || Character.isLetter(s.charAt(p1)))){
+                p1++;
             }
-            while(i<j&&!(s.charAt(j)>='0'&&s.charAt(j)<='9'||s.charAt(j)<='Z'&&s.charAt(j)>='A')){
-                j--;
+            while(p1 < p2 && !(Character.isDigit(s.charAt(p2)) || Character.isLetter(s.charAt(p2)))){
+                p2--;
             }
-            if(s.charAt(i)!=s.charAt(j)){
+            if (s.charAt(p1) != s.charAt(p2)){
                 return false;
             }
-            i++;
-            j--;
+            p1++;
+            p2--;
         }
         return true;
     }
