@@ -4,26 +4,25 @@
 //Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.
 public class Solution {
     public void sortColors(int[] nums) {
-        int red=0;
-        int blue=nums.length-1;
-        int cur=0;
-        while(cur<=blue){
-            if(nums[cur]==0){
+        int red = 0;
+        int blue = nums.length-1;
+        int cur = 0;
+        while (cur <= blue) {
+            if (nums[cur] == 0) {
                 swap(nums, red, cur);
                 red++;
                 cur++;
-            }
-            else if(nums[cur]==2){
+            } else if (nums[cur] == 2) {
                 swap(nums, blue, cur);
                 blue--;
+            } else {
+                cur++;
             }
-            else cur++;
         }
     }
-    
     public void swap(int[] nums, int i, int j){
-        int tmp=nums[i];
-        nums[i]=nums[j];
-        nums[j]=tmp;
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
