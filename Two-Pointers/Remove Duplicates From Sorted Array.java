@@ -9,24 +9,25 @@
 //It doesn't matter what you leave beyond the new length.
 public class Solution {
     public int removeDuplicates(int[] nums) {
-        if(nums.length==0||nums.length==1) 
+        if (nums.length == 0 || nums.length == 1) {
             return nums.length;
-        int cur=nums[0];
-        int i=1;
-        int j=1;
-        while(j<nums.length){
-            if(nums[j]!=cur){
-                cur=nums[j];
-                swap(nums,i,j);
-                i++;
-            }
-            j++;
         }
-        return i;
+        int cur = nums[0];
+        int p1 = 1;
+        int p2 = 1;
+        while (p2 < nums.length) {
+            if (nums[p2] != cur) {
+                cur = nums[p2];
+                swap(nums, p1, p2);
+                p1++;
+            }
+            p2++;
+        }
+        return p1;
     }
     public void swap(int[] nums,int i, int j){
-        int tmp=nums[i];
-        nums[i]=nums[j];
-        nums[j]=tmp;
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
