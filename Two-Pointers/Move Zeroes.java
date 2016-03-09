@@ -8,21 +8,21 @@
 
 public class Solution {
     public void moveZeroes(int[] nums) {
-        if(nums.length>1){
-           int i=0;
-           int j=0;
-           while(j<nums.length){
-               if(nums[j]!=0){
-                   swap(nums,i,j);
-                   i++;
+        if (nums.length > 1) {
+           int p1 = 0;
+           int p2 = 0;
+           while (p2 < nums.length) {
+               if (nums[p2] != 0) {
+                   swap(nums, p1, p2);
+                   p1++;
                }
-               j++;
+               p2++;
            }
         }
     }
     public void swap(int[] nums, int i, int j){
-        int tmp=nums[i];
+        int temp=nums[i];
         nums[i]=nums[j];
-        nums[j]=tmp;
+        nums[j]=temp;
     }
 }
