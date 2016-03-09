@@ -5,14 +5,16 @@
 //Note: You may not slant the container.
 public class Solution {
     public int maxArea(int[] height) {
-        int i=0;
-        int j=height.length-1;
-        int max=Math.min(height[i],height[j])*(j-i);
-        while(i<j){
-            if(height[i]<=height[j])
-                i++;
-            else j--;
-            max=Math.max(max,Math.min(height[i],height[j])*(j-i));
+        int start = 0;
+        int end = height.length - 1;
+        int max = Math.min(height[start], height[end]) * (end - start);
+        while (start < end) {
+            if (height[start] <= height[end]) {
+                start++;
+            } else {
+                end--;
+            }
+            max = Math.max(max,Math.min(height[start], height[end]) * (end - start));
         }
         return max;
     }
