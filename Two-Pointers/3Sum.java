@@ -10,31 +10,32 @@
 //    (-1, 0, 1)
 //    (-1, -1, 2)
 public class Solution {
-    
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> result=new ArrayList<>();
+        List<List<Integer>> ret = new ArrayList<>();
         Arrays.sort(nums);
-        HashSet<ArrayList<Integer>> set=new HashSet<>();
-        for(int i=0;i<nums.length;i++){
-            int j=i+1;
-            int k=nums.length-1;
-            while (j<k){
-                if(nums[j]+nums[k]>-nums[i]) k--;
-                else if(nums[j]+nums[k]<-nums[i]) j++;
-                else{
-                    ArrayList<Integer> newTriple=new ArrayList<>();
+        HashSet<ArrayList<Integer>> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                if (nums[j] + nums[k] > -nums[i]) {
+                    k--;
+                } else if (nums[j] + nums[k] < -nums[i]) {
+                    j++;
+                } else {
+                    ArrayList<Integer> newTriple = new ArrayList<>();
                     newTriple.add(nums[i]);
                     newTriple.add(nums[j]);
                     newTriple.add(nums[k]);
-                    if(!set.contains(newTriple)){
+                    if (!set.contains(newTriple)) {
                         set.add(newTriple);
-                        result.add(newTriple);
+                        ret.add(newTriple);
                     }
                     j++;
                     k--;
                 }
             }
         }
-        return result;
+        return ret;
     }
 }
