@@ -16,20 +16,21 @@ Return: 1 --> 2 --> 3 --> 4 --> 5
  */
 public class Solution {
     public ListNode removeElements(ListNode head, int val) {
-        if(head == null) return null;
-        ListNode dum = new ListNode(0);
-        ListNode prev = dum;
-        dum.next = head;
+        if (head == null) {
+            return null;
+        }
+        ListNode dummy = new ListNode(0);
+        ListNode prev = dummy;
+        dummy.next = head;
         ListNode cur = head;
-        while(cur != null){
-            if(cur.val == val){
+        while (cur != null) {
+            if (cur.val == val) {
                 prev.next = cur.next;
-            }
-            else{
+            } else {
                 prev = prev.next;
             }
             cur = cur.next;
         }
-        return dum.next;
+        return dummy.next;
     }
 }
