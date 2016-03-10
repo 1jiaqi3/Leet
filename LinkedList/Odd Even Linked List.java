@@ -18,17 +18,19 @@ return 1->3->5->2->4->NULL.
  */
 public class Solution {
     public ListNode oddEvenList(ListNode head) {
-        if(head==null||head.next==null||head.next.next==null) return head;
-        ListNode head2=head.next;
-        ListNode p1=head;
-        ListNode p2=head2;
-        while(p1.next!=null&&p2.next!=null){
-            p1.next=p2.next;
-            p1=p2.next;
-            p2.next=p1.next;
-            p2=p1.next;
+        if (head == null || head.next == null || head.next.next == null) {
+            return head;
         }
-        p1.next=head2;
+        ListNode head2 = head.next;
+        ListNode p1 = head;
+        ListNode p2 = head2;
+        while (p1.next != null && p2.next != null) {
+            p1.next = p2.next;
+            p1 = p2.next;
+            p2.next = p1.next;
+            p2 = p1.next;
+        }
+        p1.next = head2;
         return head;
     }
 }
