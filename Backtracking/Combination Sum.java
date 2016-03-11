@@ -24,10 +24,10 @@ public class Solution {
         if (target == 0) {
             list.add(new ArrayList(cur));
         }
-        if(target < 0) {
+        if (target < 0) {
             return;
         }
-        for(int i = level; i < candidates.length; i++){
+        for (int i = level; i < candidates.length; i++) {
             cur.add(candidates[i]);
             Backtracking(list, cur, target - candidates[i], candidates, i);
             cur.remove(cur.size()-1);
