@@ -15,24 +15,25 @@ Given 1->1->1->2->3, return 2->3.
  */
 public class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        if(head == null) return null;
-        ListNode dum = new ListNode(0);
-        dum.next = head;
-        ListNode prev = dum;
+        if (head == null) {
+            return null;
+        }
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode prev = dummy;
         ListNode cur = head;
-        while(cur != null){
+        while (cur != null) {
             int curVal = cur.val;
-            if(cur.next != null && cur.val == cur.next.val){
-                while(cur != null && cur.val == curVal){
+            if (cur.next != null && cur.val == cur.next.val) {
+                while (cur != null && cur.val == curVal) {
                     cur = cur.next;
                 }
                 prev.next = cur;
-            }
-            else{
+            } else {
                 prev = prev.next;
                 cur = cur.next;
             }
         }
-        return dum.next;
+        return dummy.next;
     }
 }
