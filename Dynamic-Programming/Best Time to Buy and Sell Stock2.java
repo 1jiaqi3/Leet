@@ -6,12 +6,15 @@
 //和日常生活中得买股票一样，只不过能预知未来~
 public class Solution {
     public int maxProfit(int[] prices) {
-        if(prices.length<2) return 0;
-        int profit=0;
-        for (int i=0;i<prices.length-1;i++){
-            if(prices[i]<prices[i+1])
-                profit+=prices[i+1]-prices[i];
+        if (prices.length < 2) {
+            return 0;
         }
-        return Math.max(0,profit);
+        int profit = 0;
+        for (int i = 0; i < prices.length - 1; i++) {
+            if (prices[i] < prices[i + 1]) {
+                profit += prices[i + 1] - prices[i];
+            }
+        }
+        return Math.max(0, profit);
     }
 }
