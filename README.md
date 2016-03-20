@@ -1,2 +1,2 @@
-# Leet
-Interview questions practice
+# Algorithm Practice
+
